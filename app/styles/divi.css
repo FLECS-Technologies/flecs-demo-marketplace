@@ -1,0 +1,56 @@
+/* FLECS Colors for Divi */
+
+/* Main Colors */
+.et_pb_section {
+    background-color: #0A0A0A !important;
+}
+
+.et_pb_text h1,
+.et_pb_text h2,
+.et_pb_text h3,
+.et_pb_text h4,
+.et_pb_text h5,
+.et_pb_text h6 {
+    color: #FAFAFA !important;
+}
+
+.et_pb_text p {
+    color: #A3A3A3 !important;
+}
+
+/* Accent Color */
+.accent-red {
+    color: #FF2E63 !important;
+}
+
+.accent-red-bg {
+    background-color: #FF2E63 !important;
+}
+
+/* Secondary Background */
+.secondary-bg {
+    background-color: #262626 !important;
+}
+
+/* Buttons */
+.et_pb_button {
+    background-color: #FF2E63 !important;
+    color: #FAFAFA !important;
+    border: none !important;
+}
+
+.et_pb_button:hover {
+    background-color: rgba(255, 46, 99, 0.9) !important;
+}
+
+/* Secondary Button */
+.secondary-button {
+    background-color: transparent !important;
+    border: 2px solid #FF2E63 !important;
+    color: #FF2E63 !important;
+}
+
+.secondary-button:hover {
+    background-color: #FF2E63 !important;
+    color: #FAFAFA !important;
+}
