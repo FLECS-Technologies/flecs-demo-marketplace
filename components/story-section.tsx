@@ -82,18 +82,31 @@ interface TimelineNodeProps {
 const particlesOptions = {
   fpsLimit: 60,
   particles: {
-    number: { value: 15, density: { enable: true, area: 800 } },
-    color: { value: "#FF2E63" },
-    shape: { type: "circle" },
+    number: {
+      value: 15,
+      density: {
+        enable: true,
+        width: 800,
+        height: 800
+      }
+    },
+    color: {
+      value: "#FF2E63"
+    },
+    shape: {
+      type: "circle"
+    },
     opacity: {
       value: 0.2,
-      random: false,
-      animation: { enable: false }
+      animation: {
+        enable: false
+      }
     },
     size: {
       value: 2,
-      random: false,
-      animation: { enable: false }
+      animation: {
+        enable: false
+      }
     },
     links: {
       enable: true,
@@ -114,7 +127,9 @@ const particlesOptions = {
       outModes: {
         default: "bounce" as const
       },
-      attract: { enable: false }
+      attract: {
+        enable: false
+      }
     }
   },
   interactivity: {
@@ -135,7 +150,7 @@ const particlesOptions = {
       }
     }
   }
-}
+};
 
 function TimelineNode({ icon: Icon, title, description, color, ringColor, delay = 0 }: TimelineNodeProps) {
   return (
@@ -626,8 +641,17 @@ export default function StorySection() {
             ...particlesOptions,
             particles: {
               ...particlesOptions.particles,
-              number: { value: 10, density: { enable: true, area: 800 } },
-              opacity: { value: 0.1 }
+              number: {
+                value: 10,
+                density: {
+                  enable: true,
+                  width: 800,
+                  height: 800
+                }
+              },
+              opacity: {
+                value: 0.1
+              }
             }
           }}
           className="absolute inset-0"
