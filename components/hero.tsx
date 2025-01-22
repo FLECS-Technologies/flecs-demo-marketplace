@@ -3,9 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Factory, Building2, Cpu, Server, Wrench, Cog } from "lucide-react";
 import { useCallback, useState, useEffect, useRef } from "react";
-import Particles from "react-tsparticles";
-import { loadSlim } from "tsparticles-slim";
-import type { Engine } from "tsparticles-engine";
+import { Particles } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
+import type { Engine } from "@tsparticles/engine";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { MarketplaceDemo } from "./interactive-tutorial/marketplace-demo";

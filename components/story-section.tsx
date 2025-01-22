@@ -39,9 +39,9 @@ import {
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card"
-import Particles from "react-tsparticles"
-import { loadSlim } from "tsparticles-slim"
-import type { Engine } from "tsparticles-engine"
+import { Particles } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
+import type { Engine } from "@tsparticles/engine";
 
 const timelineData = [
   {
@@ -690,7 +690,7 @@ export default function StorySection() {
               <div className="w-3 h-3 rounded-full bg-[#FF2E63] mb-3 group-hover:scale-125 transition-transform" />
               <span className="text-sm font-medium group-hover:text-[#FF2E63] transition-colors">{stage}</span>
               {index < 2 && (
-                <div className="absolute top-[5px] left-[24px] w-[72px] h-[2px] bg-gradient-to-r from-[#FF2E63] to-transparent" />
+                <div className="absolute top-[5px] left-[24px] w-[72px] h-[2px] bg-gradient-to-r from-[#FF2E63] to-transparent md:block hidden" />
               )}
             </motion.a>
           ))}
