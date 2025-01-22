@@ -82,7 +82,7 @@ interface TimelineNodeProps {
 const particlesOptions = {
   fpsLimit: 60,
   particles: {
-    number: { value: 15, density: { enable: true, value_area: 800 } },
+    number: { value: 15, density: { enable: true, area: 800 } },
     color: { value: "#FF2E63" },
     shape: { type: "circle" },
     opacity: {
@@ -626,7 +626,7 @@ export default function StorySection() {
             ...particlesOptions,
             particles: {
               ...particlesOptions.particles,
-              number: { value: 10, density: { enable: true, value_area: 800 } },
+              number: { value: 10, density: { enable: true, area: 800 } },
               opacity: { value: 0.1 }
             }
           }}

@@ -13,52 +13,53 @@ import { MarketplaceDemo } from "./interactive-tutorial/marketplace-demo";
 const particlesOptions = {
   fpsLimit: 60,
   particles: {
-    number: { value: 20, density: { enable: true, value_area: 1000 } },
+    number: { value: 15, density: { enable: true, area: 800 } },
     color: { value: "#FF2E63" },
     shape: { type: "circle" },
     opacity: {
-      value: 0.3,
+      value: 0.5,
       random: false,
-      animation: { enable: false }
+      anim: { enable: false }
     },
     size: {
-      value: 2,
-      random: false,
-      animation: { enable: false }
+      value: 3,
+      random: true,
+      anim: { enable: false }
     },
-    links: {
+    line_linked: {
       enable: true,
-      distance: 200,
+      distance: 150,
       color: "#FF2E63",
-      opacity: 0.2,
-      width: 1,
-      triangles: {
-        enable: false
-      }
+      opacity: 0.1,
+      width: 1
     },
     move: {
       enable: true,
-      speed: 0.8,
+      speed: 2,
       direction: "none",
       random: false,
       straight: false,
-      outModes: {
-        default: "bounce"
-      },
-      attract: { enable: false }
+      out_mode: "out",
+      bounce: false,
+      attract: { enable: false, rotateX: 600, rotateY: 1200 }
     }
   },
   interactivity: {
-    detectsOn: "canvas",
+    detect_on: "canvas",
     events: {
+      onhover: { enable: true, mode: "grab" },
+      onclick: { enable: true, mode: "push" },
       resize: true
+    },
+    modes: {
+      grab: { distance: 140, line_linked: { opacity: 1 } },
+      bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
+      repulse: { distance: 200, duration: 0.4 },
+      push: { particles_nb: 4 },
+      remove: { particles_nb: 2 }
     }
   },
-  detectRetina: false,
-  fullScreen: { enable: false },
-  background: {
-    color: "transparent"
-  }
+  retina_detect: true
 } as const;
 
 export const Hero = () => {
