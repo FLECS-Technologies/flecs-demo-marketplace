@@ -271,7 +271,7 @@ export const VersionManagementStep: FC<StepProps> = ({ onComplete, selectedApp }
   const [updating, setUpdating] = useState(false);
   const [updateProgress, setUpdateProgress] = useState(0);
   const [updateComplete, setUpdateComplete] = useState(false);
-  const progressInterval = useRef<NodeJS.Timeout>();
+  const progressInterval = useRef<NodeJS.Timeout | undefined>(undefined);
 
   useEffect(() => {
     return () => {
@@ -339,12 +339,15 @@ export const VersionManagementStep: FC<StepProps> = ({ onComplete, selectedApp }
     if (!selectedVersion || updating || updateComplete) return;
     setUpdating(true);
     setUpdateProgress(0);
+    setUpdateComplete(false);
 
     progressInterval.current = setInterval(() => {
       setUpdateProgress(prev => {
         const newProgress = prev + Math.random() * 15;
         if (newProgress >= 100) {
-          clearInterval(progressInterval.current);
+          if (progressInterval.current) {
+            clearInterval(progressInterval.current);
+          }
           setUpdating(false);
           setUpdateComplete(true);
           setTimeout(onComplete, 1000);
@@ -352,7 +355,7 @@ export const VersionManagementStep: FC<StepProps> = ({ onComplete, selectedApp }
         }
         return newProgress;
       });
-    }, 200);
+    }, 500);
   };
 
   const getVersionTypeColor = (type: string) => {
@@ -846,11 +849,16 @@ export const BrandingStep: FC<StepProps> = ({ onComplete, companyName, brandColo
                           setSelectedIcon(name);
                           setUploadedLogo(null);
                         }}
-                        className={cn(
-                          "aspect-square rounded-lg border bg-card flex items-center justify-center hover:border-primary/50 transition-all",
-                          selectedIcon === name && "border-primary ring-1 ring-primary"
-                        )}
+                        className="group relative"
+                        title={`${name}`}
                       >
+                        <div 
+                          className={cn(
+                            "w-full aspect-square rounded-lg transition-all",
+                            selectedIcon === name ? "ring-2 ring-primary ring-offset-2" : "hover:ring-2 hover:ring-primary/50 hover:ring-offset-2"
+                          )}
+                          style={{ backgroundColor: selectedColor }}
+                        />
                         <div className={cn(
                           "w-14 h-14 rounded-lg flex items-center justify-center transition-colors",
                           selectedIcon === name ? "bg-primary/20" : "bg-muted"

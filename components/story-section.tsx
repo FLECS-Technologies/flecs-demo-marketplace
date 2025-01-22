@@ -39,9 +39,6 @@ import {
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card"
-import { Particles } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
-import type { Engine } from "@tsparticles/engine";
 
 const timelineData = [
   {
@@ -77,109 +74,6 @@ interface TimelineNodeProps {
   color: string
   ringColor: string
   delay?: number
-}
-
-const particlesOptions = {
-  fpsLimit: 60,
-  particles: {
-    number: {
-      value: 15,
-      density: {
-        enable: true,
-        width: 800,
-        height: 800
-      }
-    },
-    color: {
-      value: "#FF2E63"
-    },
-    shape: {
-      type: "circle"
-    },
-    opacity: {
-      value: 0.2,
-      animation: {
-        enable: false
-      }
-    },
-    size: {
-      value: 2,
-      animation: {
-        enable: false
-      }
-    },
-    links: {
-      enable: true,
-      distance: 150,
-      color: "#FF2E63",
-      opacity: 0.2,
-      width: 1,
-      triangles: {
-        enable: false
-      }
-    },
-    move: {
-      enable: true,
-      speed: 0.8,
-      direction: "none" as const,
-      random: false,
-      straight: false,
-      outModes: {
-        default: "bounce" as const
-      },
-      attract: {
-        enable: false
-      }
-    }
-  },
-  interactivity: {
-    detectsOn: "canvas" as const,
-    events: {
-      onHover: {
-        enable: true,
-        mode: "grab"
-      },
-      resize: true
-    },
-    modes: {
-      grab: {
-        distance: 140,
-        links: {
-          opacity: 0.3
-        }
-      }
-    }
-  }
-};
-
-function TimelineNode({ icon: Icon, title, description, color, ringColor, delay = 0 }: TimelineNodeProps) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-      className="relative flex flex-col items-center"
-    >
-      {/* Icon */}
-      <div className={cn(
-        "relative w-12 h-12 rounded-full flex items-center justify-center",
-        "bg-background",
-        ringColor,
-        "ring-1"
-      )}>
-        <Icon className={cn("w-6 h-6", color)} />
-      </div>
-
-      {/* Content */}
-      <div className="text-center mt-4">
-        <h3 className="text-lg font-semibold mb-1">{title}</h3>
-        {description && (
-          <p className="text-sm text-muted-foreground">{description}</p>
-        )}
-      </div>
-    </motion.div>
-  )
 }
 
 const generateStages = () => {
@@ -623,41 +517,11 @@ function ROICalculator() {
 }
 
 export default function StorySection() {
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine)
-  }, [])
-
   return (
     <section 
       className="relative py-32 overflow-hidden bg-background/50"
       aria-label="Industrial Automation Evolution"
     >
-      {/* Background Particles with reduced opacity for better focus */}
-      <div className="absolute inset-0 opacity-50 -z-10" aria-hidden="true">
-        <Particles
-          id="tsparticles"
-          init={particlesInit}
-          options={{
-            ...particlesOptions,
-            particles: {
-              ...particlesOptions.particles,
-              number: {
-                value: 10,
-                density: {
-                  enable: true,
-                  width: 800,
-                  height: 800
-                }
-              },
-              opacity: {
-                value: 0.1
-              }
-            }
-          }}
-          className="absolute inset-0"
-        />
-      </div>
-      
       {/* Hero Section - Setting the Stage */}
       <motion.header 
         initial={{ opacity: 0, y: 20 }}

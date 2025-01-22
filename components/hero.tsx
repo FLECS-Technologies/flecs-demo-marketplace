@@ -3,80 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Factory, Building2, Cpu, Server, Wrench, Cog } from "lucide-react";
 import { useCallback, useState, useEffect, useRef } from "react";
-import { Particles } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
-import type { Engine } from "@tsparticles/engine";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { MarketplaceDemo } from "./interactive-tutorial/marketplace-demo";
-
-const particlesOptions = {
-  fpsLimit: 60,
-  particles: {
-    number: {
-      value: 15,
-      density: {
-        enable: true,
-        width: 800,
-        height: 800
-      }
-    },
-    color: {
-      value: "#FF2E63"
-    },
-    shape: {
-      type: "circle"
-    },
-    opacity: {
-      value: 0.3,
-      animation: {
-        enable: false
-      }
-    },
-    size: {
-      value: 2,
-      animation: {
-        enable: false
-      }
-    },
-    links: {
-      enable: true,
-      distance: 200,
-      color: "#FF2E63",
-      opacity: 0.2,
-      width: 1,
-      triangles: {
-        enable: false
-      }
-    },
-    move: {
-      enable: true,
-      speed: 0.8,
-      direction: "none",
-      random: false,
-      straight: false,
-      outModes: {
-        default: "bounce"
-      },
-      attract: {
-        enable: false
-      }
-    }
-  },
-  interactivity: {
-    detectsOn: "canvas",
-    events: {
-      resize: true
-    }
-  },
-  detectRetina: false,
-  fullScreen: {
-    enable: false
-  },
-  background: {
-    color: "transparent"
-  }
-} as const;
 
 export const Hero = () => {
   const [currentBenefitIndex, setCurrentBenefitIndex] = useState(0);
@@ -91,10 +20,6 @@ export const Hero = () => {
   const demoRef = useRef<HTMLDivElement>(null);
   const [translateY, setTranslateY] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine);
-  }, []);
 
   const updateWindowPosition = useCallback(() => {
     if (demoRef.current) {
