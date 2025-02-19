@@ -1,0 +1,82 @@
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes pulseButton {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.gradient-border-wrapper {
+  position: relative;
+  z-index: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 3px;
+  transition: all 0.3s ease;
+}
+
+.gradient-border-wrapper::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-image: conic-gradient(
+    transparent 0deg,
+    #73A9CA 10deg,
+    rgba(115, 169, 202, 0) 72deg,
+    transparent 72deg
+  );
+  animation: rotate 12s linear infinite;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.gradient-border-wrapper:hover::before {
+  opacity: 0;
+  animation-play-state: paused;
+}
+
+.gradient-border-wrapper::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 6px;
+  top: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  background: black;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Dark mode support */
+:root[class~="dark"] .gradient-border-wrapper::after {
+  background: #000;
+}
+
+:root:not([class~="dark"]) .gradient-border-wrapper::after {
+  background: #fff;
+}
