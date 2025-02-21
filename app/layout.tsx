@@ -27,8 +27,8 @@ export default function RootLayout({
       <body className={`${inter.className} overflow-hidden`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <div className="fixed inset-0 bg-gradient-to-br from-blue-50 via-blue-100 to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
