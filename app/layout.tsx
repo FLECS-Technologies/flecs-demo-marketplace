@@ -25,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} overflow-hidden`}>
+        // Force dark mode and disable system theme switching
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
