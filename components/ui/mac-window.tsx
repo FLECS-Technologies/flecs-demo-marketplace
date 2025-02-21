@@ -10,7 +10,7 @@ interface MacWindowProps {
 
 export const MacWindow: FC<MacWindowProps> = ({ children, className }) => {
   return (
-    <div className={`rounded-xl border bg-card shadow-lg overflow-hidden w-[900px] ${className}`}>
+    <div className={`rounded-xl border bg-card shadow-lg overflow-hidden w-[1200px] ${className}`}>
       {/* Mac Window Controls */}
       <div className="h-12 bg-muted border-b flex items-center px-4 relative">
         <div className="flex items-center space-x-2 z-50">
@@ -36,7 +36,7 @@ export const MacWindow: FC<MacWindowProps> = ({ children, className }) => {
       </div>
       
       {/* Window Content */}
-      <div className="h-[600px] overflow-hidden">
+      <div className="h-[700px] overflow-hidden">
         {children}
       </div>
     </div>
